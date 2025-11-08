@@ -14,10 +14,10 @@ Route::get('/categories/{slug}', [CategoryController::class, 'show'])->name('cat
 Route::get('/writers', [WriterController::class, 'index'])->name('writers.index');
 Route::get('/writers/{id}', [WriterController::class, 'show'])->name('writers.show');
 
-// Popular route must be declared before resource if using slug param
+
 Route::get('/courses/popular', [CourseController::class, 'popular'])->name('courses.popular');
 
 Route::resource('courses', CourseController::class)->parameters(['courses'=>'slug']);
 
-// Static about
+
 Route::view('/about','about')->name('about');
