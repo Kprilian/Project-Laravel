@@ -13,7 +13,7 @@ class CourseSeeder extends Seeder
 {
     public function run(): void
     {
-        // Nonaktifkan FK untuk truncate (MySQL)
+       
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Course::truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
@@ -28,10 +28,10 @@ class CourseSeeder extends Seeder
             return;
         }
 
-        // Pilih kategori tetap: Data Science dan Network Security
+       
         $catNames = ['Data Science', 'Network Security'];
 
-        // Ambil model category sesuai nama
+        
         $chosenCategories = Category::whereIn('name', $catNames)->get()->keyBy('name');
 
         foreach ($catNames as $cn) {
@@ -41,7 +41,7 @@ class CourseSeeder extends Seeder
             }
         }
 
-        // Buat 6 course total (3 per kategori)
+        
         $perCategory = 3;
         $i = 0;
 
@@ -66,6 +66,6 @@ class CourseSeeder extends Seeder
             }
         }
 
-        $this->command->info('✅ CourseSeeder selesai untuk kategori Data Science & Network Security.');
+        
     }
 }
